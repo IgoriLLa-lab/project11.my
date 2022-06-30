@@ -13,13 +13,13 @@
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error . ' - Название поста уже занято' }}</li>
+                    <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
     @endif
 
-    <form action="/create" id="articleForm" method="post">
+    <form action="/create" id="articleForm" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <input type="text" name="post_title" class="form-control" placeholder="Введите название поста" id="post_title">
@@ -28,8 +28,14 @@
         <div class="form-group">
             <textarea class="form-control" name="post_text" placeholder="Введите Ваш пост" id="post_text"></textarea>
         </div>
+
+        <div class="form-group" >
+            <input class="form-control" name="image" type="file" id="image">
+
+        </div>
+
         <div class="form-group">
-            <button type="submit" class="btn btn-success" id="submit">Отправить</button>
+            <button type="submit" class="btn btn-primary" id="submit">Отправить</button>
         </div>
     </form>
 </div>
